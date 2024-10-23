@@ -16,11 +16,11 @@ function mc-image-helper-quilt(){
   mc-image-helper install-quilt \
     --loader-version="$QUILT_LOADER_VERSION" \
     --minecraft-version="$VERSION" \
-    --output-directory=/data \
+    --output-directory=/home/container \
     --results-file="$resultsFile" "$@"
 }
 
-resultsFile=/data/.quilt.env
+resultsFile=/home/container/.quilt.env
 
 if [[ $QUILT_LAUNCHER ]]; then
   logWarning "Use of QUILT_LAUNCHER is a deprecated feature."

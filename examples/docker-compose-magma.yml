@@ -10,6 +10,6 @@ services:
       TYPE: MAGMA
       VERSION: 1.16.5
     volumes:
-      - data:/data
+      - data:/home/container
 volumes:
   data: {}

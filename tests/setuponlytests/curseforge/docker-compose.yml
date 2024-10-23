@@ -9,6 +9,6 @@ services:
       INIT_MEMORY: 2G
       MAX_MEMORY: 6G
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container
       - ./modpacks:/modpacks:ro
 

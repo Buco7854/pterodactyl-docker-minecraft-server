@@ -10,7 +10,7 @@ services:
       VANILLATWEAKS_FILE: /config/vanillatweaks-datapacks.json
       REMOVE_OLD_VANILLATWEAKS: "TRUE"
     volumes:
-      - data:/data
+      - data:/home/container
       - ./vanillatweaks-datapacks.json:/config/vanillatweaks-datapacks.json:ro
   vanillatweaks_sharecode:
     # port is set to 25566 to not conflict with vanillatweaks_file example
@@ -35,7 +35,7 @@ services:
       VANILLATWEAKS_FILE: /config/vanillatweaks-datapacks.json,/config/vanillatweaks-resourcepacks.json,/config/vanillatweaks-craftingtweaks.json
       REMOVE_OLD_VANILLATWEAKS: "TRUE"
     volumes:
-      - data:/data
+      - data:/home/container
       - ./vanillatweaks-datapacks.json:/config/vanillatweaks-datapacks.json:ro
       - ./vanillatweaks-resourcepacks.json:/config/vanillatweaks-resourcepacks.json:ro
       - ./vanillatweaks-craftingtweaks.json:/config/vanillatweaks-craftingtweaks.json:ro

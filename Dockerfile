@@ -10,8 +10,9 @@ ARG TARGETVARIANT
 # The following three arg/env vars get used by the platform specific "install-packages" script
 ARG EXTRA_DEB_PACKAGES=""
 ARG EXTRA_DNF_PACKAGES=""
-ARG EXTRA_ALPINE_PACKAGES=""
+ARG EXTRA_ALPINE_PACKAGES="ncurses"
 ARG FORCE_INSTALL_PACKAGES=1
+
 RUN --mount=target=/build,source=build \
     TARGET=${TARGETARCH}${TARGETVARIANT} \
     /build/run.sh install-packages
@@ -58,13 +59,16 @@ RUN curl -fsSL ${MC_HELPER_BASE_URL}/mc-image-helper-${MC_HELPER_VERSION}.tgz \
   | tar -C /usr/share -zxf - \
   && ln -s /usr/share/mc-image-helper-${MC_HELPER_VERSION}/bin/mc-image-helper /usr/bin
 
-VOLUME ["/data"]
-WORKDIR /data
+ENV  USER=container HOME=/home/container
+
+VOLUME ["/home/container"]
+WORKDIR /home/container
 
 STOPSIGNAL SIGTERM
 
 # End user MUST set EULA and change RCON_PASSWORD
-ENV TYPE=VANILLA VERSION=LATEST EULA="" UID=1000 GID=1000
+ENV TYPE=VANILLA VERSION=LATEST EULA="" UID=988 GID=988
+
 
 COPY --chmod=755 scripts/start* /
 COPY --chmod=755 bin/ /usr/local/bin/
@@ -76,5 +80,8 @@ RUN curl -fsSL -o /image/Log4jPatcher.jar https://github.com/CreeperHost/Log4jPa
 
 RUN dos2unix /start* /auto/*
 
-ENTRYPOINT [ "/start" ]
+COPY ./entrypoint.sh /entrypoint.sh
+
+# root
+CMD ["/bin/bash", "/entrypoint.sh"]
 HEALTHCHECK --start-period=2m --retries=2 --interval=30s CMD mc-health

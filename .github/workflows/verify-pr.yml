@@ -43,7 +43,7 @@ jobs:
             platforms: linux/amd64
             mcVersion: 1.12.2
     env:
-      IMAGE_TO_TEST: ${{ github.repository_owner }}/minecraft-server:test-${{ matrix.variant }}-${{ github.run_id }}
+      IMAGE_TO_TEST: ${{ github.repository_owner }}/pterodactyl-minecraft-server:test-${{ matrix.variant }}-${{ github.run_id }}
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout

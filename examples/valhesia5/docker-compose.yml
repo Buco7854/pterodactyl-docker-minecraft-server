@@ -11,7 +11,7 @@ services:
       CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/valhelsia-5/files/4429560
       MEMORY: 4G
     volumes:
-      - data:/data
+      - data:/home/container
 
 volumes:
   data: {}

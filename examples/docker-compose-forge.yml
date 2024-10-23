@@ -12,9 +12,9 @@ services:
       DEBUG: "true"
     volumes:
     # use a named, managed volume for data volume
-    - mc_forge:/data
+    - mc_forge:/home/container
     # attach local host directory "mods" in same directory as this compose file
-    # all mods in this directory get copied into /data/mods at startup
+    # all mods in this directory get copied into /home/container/mods at startup
     - ./mods:/mods:ro
 
 volumes:

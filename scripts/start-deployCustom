@@ -10,7 +10,7 @@ isDebugging && set -x
 
 if isURL "${CUSTOM_SERVER}"; then
   filename=$(basename "${CUSTOM_SERVER}")
-  export SERVER=/data/${filename}
+  export SERVER=/home/container/${filename}
 
   if [[ -f ${SERVER} ]] && ! isTrue "$FORCE_REDOWNLOAD"; then
     log "Using previously downloaded jar at ${SERVER}"

@@ -39,7 +39,7 @@ elif ! [[ ${FTB_MODPACK_VERSION_ID} =~ [0-9]+ ]]; then
 fi
 
 if isTrue "$FTB_FORCE_REINSTALL" || ! [ -f "${ftbInstallMarker}" ] || [ "$(cat "${ftbInstallMarker}")" != "${FTB_MODPACK_ID}=${FTB_MODPACK_VERSION_ID}" ]; then
-  ftbInstaller=/data/ftb-installer
+  ftbInstaller=/home/container/ftb-installer
   arm=
   if ! [[ -f "${ftbInstaller}" ]]; then
     log "Downloading FTB installer"

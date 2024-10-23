@@ -9,6 +9,6 @@ services:
       MODRINTH_PROJECTS: |
         jline4mcdsrv
     volumes:
-      - mc-data:/data
+      - mc-data:/home/container
 volumes:
   mc-data: {}

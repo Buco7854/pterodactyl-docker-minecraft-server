@@ -13,7 +13,7 @@ set -e -o pipefail
 . "${SCRIPTS:-/}start-utils"
 isDebugging && set -x
 
-out_dir=/data/${LEVEL:-world}/datapacks
+out_dir=/home/container/${LEVEL:-world}/datapacks
 
 # Remove old datapacks
 if isTrue "${REMOVE_OLD_DATAPACKS}" && [ -z "${DATAPACKS_FILE}" ]; then
@@ -78,7 +78,7 @@ fi
 
 if [[ ${VANILLATWEAKS_FILE} || ${VANILLATWEAKS_SHARECODE} ]]; then
   mc-image-helper vanillatweaks \
-    --output-directory="/data" \
+    --output-directory="/home/container" \
     --world-subdir="${LEVEL:-world}" \
     --share-codes="$VANILLATWEAKS_SHARECODE" \
     --pack-files="$VANILLATWEAKS_FILE"

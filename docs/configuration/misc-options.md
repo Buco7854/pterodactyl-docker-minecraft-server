@@ -4,9 +4,9 @@
 If you would like to run a custom server JAR, set `-e TYPE=CUSTOM` and pass the custom server
 JAR via `CUSTOM_SERVER`. It can either be a URL or a container path to an existing JAR file.
 
-If it is a URL, it will only be downloaded into the `/data` directory if it wasn't already. As
+If it is a URL, it will only be downloaded into the `/home/container` directory if it wasn't already. As
 such, if you need to upgrade or re-download the JAR, then you will need to stop the container,
-remove the file from the container's `/data` directory, and start again.
+remove the file from the container's `/home/container` directory, and start again.
 
 ## Force re-download of the server file
 
@@ -17,14 +17,14 @@ the particular server type. by adding a `-e FORCE_REDOWNLOAD=true` to your comma
 For example, with PaperSpigot, it would look something like this:
 
 ```
-docker run -d -v /path/on/host:/data \
+docker run -d -v /path/on/host:/home/container \
     -e TYPE=PAPER -e FORCE_REDOWNLOAD=true \
     -p 25565:25565 -e EULA=TRUE --name mc itzg/minecraft-server
 ```
 
 ## Running as alternate user/group ID
 
-By default, the container will switch to user ID 1000 and group ID 1000;
+By default, the container will switch to user ID 988 and group ID 988;
 however, you can override those values by setting `UID` and/or `GID` as environmental entries, during the `docker run` command.
 
     -e UID=1234

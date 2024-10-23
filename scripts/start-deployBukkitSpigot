@@ -6,7 +6,7 @@ isDebugging && set -x
 
 set -eo pipefail
 
-spigotBuildLog="/data/spigot_build.log"
+spigotBuildLog="/home/container/spigot_build.log"
 
 function handleFailedSpigotBuild {
   logError "Failed to build Spigot"
@@ -16,7 +16,7 @@ function handleFailedSpigotBuild {
 
 
 function buildSpigotFromSource {
-  local tempDir="/data/temp"
+  local tempDir="/home/container/temp"
 
   if [[ ${TYPE^^} = *BUKKIT ]] && ! versionLessThan "1.14"; then
     logError "Craftbukkit build is only supported for versions less than 1.14"
@@ -36,12 +36,12 @@ function buildSpigotFromSource {
 
   case ${TYPE^^} in
     SPIGOT)
-      if ! mv spigot-*.jar "/data/${SERVER}"; then
+      if ! mv spigot-*.jar "/home/container/${SERVER}"; then
         handleFailedSpigotBuild
       fi
       ;;
     *BUKKIT)
-      if ! mv craftbukkit-*.jar "/data/${SERVER}"; then
+      if ! mv craftbukkit-*.jar "/home/container/${SERVER}"; then
         handleFailedSpigotBuild
       fi
       ;;
@@ -49,7 +49,7 @@ function buildSpigotFromSource {
 
   log "Cleaning up"
   rm -rf ${tempDir}
-  cd /data
+  cd /home/container
 }
 
 function downloadSpigot {

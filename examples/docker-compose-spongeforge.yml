@@ -1,6 +1,6 @@
 # Forge with Sponge API support. THIS REQUIRES DOWNLOADING SPONGEFORGE.
-# Place the SpongeForge jar file in /data/mods. Other Forge mods go here as well.
-# Place Sponge mods in /data/mods/plugins. Yes, this is a directory inside the Forge mod directory. Do NOT use /data/plugins.
+# Place the SpongeForge jar file in /home/container/mods. Other Forge mods go here as well.
+# Place Sponge mods in /home/container/mods/plugins. Yes, this is a directory inside the Forge mod directory. Do NOT use /home/container/plugins.
 
 services:
   minecraft:
@@ -8,7 +8,7 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - "mc:/data"
+      - "mc:/home/container"
     environment:
       EULA: "TRUE"
       #VERSION: "1.12.2" (Ensure this is compatbile with the version of SpongeForge you are using!)

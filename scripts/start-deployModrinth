@@ -4,7 +4,7 @@ set -eu
 # shellcheck source=start-utils
 . "${SCRIPTS:-/}start-utils"
 
-resultsFile=/data/.install-modrinth.env
+resultsFile=/home/container/.install-modrinth.env
 
 : "${MODRINTH_MODPACK:=${MODRINTH_PROJECT:-}}"
 : "${MODRINTH_LOADER:=}"
@@ -27,7 +27,7 @@ ensureRemoveAllModsOff "MOD_PLATFORM=MODRINTH"
 args=(
   --results-file="$resultsFile"
   --project="${MODRINTH_MODPACK}"
-  --output-directory=/data
+  --output-directory=/home/container
 )
 
 if [[ $MODRINTH_IGNORE_MISSING_FILES ]]; then

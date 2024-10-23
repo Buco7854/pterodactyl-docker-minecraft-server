@@ -16,7 +16,7 @@ services:
       ENABLE_COMMAND_BLOCK: true
       DIFFICULTY: hard
     volumes:
-      - mc-data:/data
+      - mc-data:/home/container
 
 volumes:
   mc-data: {}

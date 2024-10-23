@@ -6,4 +6,4 @@ services:
       EULA: "TRUE"
       SETUP_ONLY: "TRUE"
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container

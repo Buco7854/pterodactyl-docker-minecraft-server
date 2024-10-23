@@ -1,1 +1,1 @@
-mc-image-helper assert fileExists "/data/pufferfish-*.jar"
+mc-image-helper assert fileExists "/home/container/pufferfish-*.jar"

@@ -10,7 +10,7 @@ services:
 #      CF_FILENAME_MATCHER: v18.5
       MEMORY: 4G
     volumes:
-      - mc:/data
+      - mc:/home/container
     ports:
       - "25565:25565"
 

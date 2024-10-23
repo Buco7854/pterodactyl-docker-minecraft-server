@@ -15,5 +15,5 @@ services:
       VERSION: 1.19
       DEBUG_HELPER: "true"
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container
       - ./fake.jar:/servers/fake.jar

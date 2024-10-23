@@ -5,7 +5,7 @@
 isDebugging && set -x
 
 if ! SERVER=$(mc-image-helper github download-latest-asset \
-  --output-directory=/data \
+  --output-directory=/home/container \
   --name-pattern="kettinglauncher-.+?(?<!-sources)\.jar" \
   kettingpowered/kettinglauncher
   ); then

@@ -7,10 +7,10 @@
 . "${SCRIPTS:-$(dirname "$0")}/start-utils"
 isDebugging && set -x
 
-resultsFile=/data/.run-neoforge.env
+resultsFile=/home/container/.run-neoforge.env
 
 if ! mc-image-helper install-neoforge \
-  --output-directory=/data \
+  --output-directory=/home/container \
   --results-file=${resultsFile} \
   --minecraft-version="${VERSION}" \
   --neoforge-version="${NEOFORGE_VERSION}" \

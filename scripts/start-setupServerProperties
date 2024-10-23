@@ -3,7 +3,7 @@
 # shellcheck source=start-utils
 . "${SCRIPTS:-/}start-utils"
 
-: "${SERVER_PROPERTIES:=/data/server.properties}"
+: "${SERVER_PROPERTIES:=/home/container/server.properties}"
 : "${OVERRIDE_SERVER_PROPERTIES:=true}"
 : "${SKIP_SERVER_PROPERTIES:=false}"
 : "${ENABLE_WHITELIST:=}"

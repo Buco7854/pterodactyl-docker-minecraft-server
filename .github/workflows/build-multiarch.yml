@@ -87,7 +87,7 @@ jobs:
             platforms: linux/amd64,linux/arm64
             mcVersion: 1.12.2
     env:
-      IMAGE_TO_TEST: "${{ github.repository_owner }}/minecraft-server:test-${{ matrix.variant }}-${{ github.run_id }}"
+      IMAGE_TO_TEST: "${{ github.repository_owner }}/pterodactyl-minecraft-server:test-${{ matrix.variant }}-${{ github.run_id }}"
       HAS_IMAGE_REPO_ACCESS: ${{ secrets.DOCKER_USER != '' && secrets.DOCKER_PASSWORD != '' }}
       MAIN_VARIANT: java21
     runs-on: ubuntu-22.04
@@ -105,8 +105,8 @@ jobs:
           # NOTE for forks: if your Docker Hub organization doesn't match your Github repo's,
           # then the use of ${{ github.repository_owner }} will need to be replaced.
           images: |
-            ${{ github.repository_owner }}/minecraft-server
-            ghcr.io/${{ github.repository_owner }}/minecraft-server
+            ${{ github.repository_owner }}/pterodactyl-minecraft-server
+            ghcr.io/${{ github.repository_owner }}/pterodactyl-minecraft-server
           tags: |
             # For the "main" variant, it gets the tag as-is, without suffix
             type=ref,event=tag,enable=${{ matrix.variant == env.MAIN_VARIANT }}

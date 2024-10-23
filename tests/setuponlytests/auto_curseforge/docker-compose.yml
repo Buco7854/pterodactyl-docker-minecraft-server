@@ -11,5 +11,5 @@ services:
       # Use the image bundled one to ensure latest is being tested
       CF_EXCLUDE_INCLUDE_FILE: /image/cf-exclude-include.json
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container
 

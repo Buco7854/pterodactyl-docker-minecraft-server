@@ -11,7 +11,7 @@ services:
       CUSTOM_SERVER: /servers/fake.jar
       VERSION: 1.18.1
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container
       - ./vt-datapacks.json:/config/vt-datapacks.json:ro
       - ./vt-craftingtweaks.json:/config/vt-craftingtweaks.json:ro
       - ./vt-resourcepacks.json:/config/vt-resourcepacks.json:ro

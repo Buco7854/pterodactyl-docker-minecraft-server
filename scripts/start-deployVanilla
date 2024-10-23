@@ -39,12 +39,12 @@ if [ ! -e "$SERVER" ] || [ -n "$FORCE_REDOWNLOAD" ]; then
     exit 1
   fi
 fi
-minecraftServerJarPath=/data/minecraft_server.jar
+minecraftServerJarPath=/home/container/minecraft_server.jar
 
 if versionLessThan 1.6; then
-  if ! [[ -L $minecraftServerJarPath && $minecraftServerJarPath -ef "/data/$SERVER" ]]; then
+  if ! [[ -L $minecraftServerJarPath && $minecraftServerJarPath -ef "/home/container/$SERVER" ]]; then
     rm -f $minecraftServerJarPath
-    ln -s "/data/$SERVER" $minecraftServerJarPath
+    ln -s "/home/container/$SERVER" $minecraftServerJarPath
   fi
   SERVER=minecraft_server.jar
 elif [[ -L $minecraftServerJarPath ]]; then

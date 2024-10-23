@@ -20,7 +20,7 @@ latestJarName=$(echo ${latestAsset} | jq --raw-output '.name')
 latestJarId=$(echo ${latestAsset} | jq --raw-output '.id')
 
 
-export SERVER="/data/${latestJarName}"
+export SERVER="/home/container/${latestJarName}"
 
 if [ ! -f ${SERVER} ]; then
   log "Downloading ${latestJarName}"

@@ -1,19 +1,18 @@
-[![Docker Pulls](https://img.shields.io/docker/pulls/itzg/minecraft-server.svg)](https://hub.docker.com/r/itzg/minecraft-server/)
-[![Docker Stars](https://img.shields.io/docker/stars/itzg/minecraft-server.svg?maxAge=2592000)](https://hub.docker.com/r/itzg/minecraft-server/)
-[![GitHub Issues](https://img.shields.io/github/issues-raw/itzg/docker-minecraft-server.svg)](https://github.com/itzg/docker-minecraft-server/issues)
-[![Discord](https://img.shields.io/discord/660567679458869252?label=Discord&logo=discord)](https://discord.gg/DXfKpjB)
-[![Build and Publish](https://github.com/itzg/docker-minecraft-server/actions/workflows/build-multiarch.yml/badge.svg)](https://github.com/itzg/docker-minecraft-server/actions/workflows/build-multiarch.yml)
-[![](https://img.shields.io/badge/Donate-Buy%20me%20a%20coffee-orange.svg)](https://www.buymeacoffee.com/itzg)
-[![Documentation Status](https://readthedocs.org/projects/docker-minecraft-server/badge/?version=latest)](https://docker-minecraft-server.readthedocs.io/en/latest/?badge=latest)
+## Overview
 
- [![Read the docs](docs/img/docs-banner.png)](https://docker-minecraft-server.readthedocs.io/)
+This repository is a **fork** of the [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server), specifically adapted for **Pterodactyl**. You can view the available images [here](https://hub.docker.com/repository/docker/buco7854/pterodactyl-minecraft-server/tags). This image primarily ensures compatibility with Pterodactyl. For any non-Pterodactyl-related questions, please refer to the official [documentation](https://docker-minecraft-server.readthedocs.io/en/latest/).
 
-There you will find things like
-- [Quick start with Docker Compose](https://docker-minecraft-server.readthedocs.io/en/latest/#using-docker-compose)
-- Running [different versions of Minecraft](https://docker-minecraft-server.readthedocs.io/en/latest/versions/minecraft/) and using [various server types](https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/)
-- [Setting server properties via container environment variables](https://docker-minecraft-server.readthedocs.io/en/latest/configuration/server-properties/)
-- [Managing mods and plugins with automated downloads and cleanup](https://docker-minecraft-server.readthedocs.io/en/latest/mods-and-plugins/)
-- [Using various modpack providers/platforms](https://docker-minecraft-server.readthedocs.io/en/latest/types-and-platforms/)
-- ...and much more
+### Startup Command Example
+You can set environment variables in Pterodactyl variables or directly in the **Startup Command** field. Here's an example of how to configure it in one line:
+```bash
+export EULA="TRUE" TYPE="FORGE" TZ="Europe/Paris" MEMORY="4G" SERVER_PORT="25565" QUERY_PORT="25565" ENABLE_QUERY="true" VIEW_DISTANCE=10 MOTD="My Minecraft Server Powered by Docker" VERSION="1.12.2" FORGE_VERSION="14.23.5.2859" REMOVE_OLD_MODS="false" SPAWN_ANIMALS="false" SPAWN_MONSTERS="false" SPAWN_NPCS="false" ENABLE_COMMAND_BLOCK="true" RCON_CMDS_STARTUP=$'whitelist add User1\nwhitelist add user2\nop User1\nop User2\ngamerule doFireTick false' RCON_CMDS_LAST_DISCONNECT=$'gamerule doFireTick false\nweather clear\ngamerule doDaylightCycle false\ngamerule doWeatherCycle false\ndifficulty peaceful' && /start
+```
 
-There are also many examples located in [the examples directory](examples) of this repo.
+### Pterodactyl User Permissions
+Pterodactyl always runs the image using the **UID 988** user (changing the UID or GID will not have any impact since Pterodactyl forces the container to use UID:GID 988), referred to as `container` in the image.
+
+### Running Outside of Pterodactyl
+If you wish to run this image outside of Pterodactyl, it’s recommended to use the original [itzg/docker-minecraft-server](https://github.com/itzg/docker-minecraft-server). However, if you decide to use this fork, you **must mount your data into `/home/container`**, as this is required for Pterodactyl compatibility.
+
+### Disclaimer
+There may be some issues with the image, as I am not familiar with dealing with Dockerfiles, especially for a complex image like this.

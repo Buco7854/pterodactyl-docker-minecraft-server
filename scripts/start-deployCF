@@ -29,7 +29,7 @@ if [[ ${VERSION^^} == LATEST ]]; then
 fi
 resolveVersion
 
-: "${FTB_BASE_DIR:=${CF_BASE_DIR:-/data/FeedTheBeast}}"
+: "${FTB_BASE_DIR:=${CF_BASE_DIR:-/home/container/FeedTheBeast}}"
 export FTB_BASE_DIR
 
 legacyJavaFixerUrl=https://files.minecraftforge.net/maven/net/minecraftforge/lex/legacyjavafixer/1.0/legacyjavafixer-1.0.jar
@@ -47,7 +47,7 @@ downloadModpack() {
   srv_modpack=${FTB_SERVER_MOD}
   if isURL "${srv_modpack}"; then
     log "Downloading modpack from ${srv_modpack}..."
-    if ! srv_modpack=$(get -o /data --output-filename --skip-existing "${srv_modpack}"); then
+    if ! srv_modpack=$(get -o /home/container --output-filename --skip-existing "${srv_modpack}"); then
       logError "Failed to download modpack"
       exit 1
     fi
@@ -57,8 +57,8 @@ downloadModpack() {
       srv_modpack="/${srv_modpack}"
   fi
   if [[ ! "${srv_modpack:0:1}" == "/" ]]; then
-      # If not an absolute path, assume file is in "/data"
-      srv_modpack=/data/${srv_modpack}
+      # If not an absolute path, assume file is in "/home/container"
+      srv_modpack=/home/container/${srv_modpack}
   fi
   if [[ ! -f "${srv_modpack}" ]]; then
       logError "FTB server modpack: ${srv_modpack} not found."
@@ -76,7 +76,7 @@ if ! isTrue "${USE_MODPACK_START_SCRIPT:-true}"; then
   downloadModpack
 
   needsInstall=true
-  installMarker=/data/.curseforge-installed
+  installMarker=/home/container/.curseforge-installed
   if [ -f $installMarker ]; then
     if [ "$(cat $installMarker)" != "${FTB_SERVER_MOD}" ]; then
       log "Upgrading modpack"
@@ -226,7 +226,7 @@ if [[ $serverSetupConfig && $serverSetupConfig != "~" ]]; then
     resolvedBaseInstallPath="$(dirname "$serverSetupConfig")/${baseInstallPath}"
     mkdir -p "$resolvedBaseInstallPath"
 
-    cp -n /data/eula.txt "${resolvedBaseInstallPath}/eula.txt"
+    cp -n /home/container/eula.txt "${resolvedBaseInstallPath}/eula.txt"
   fi
 fi
 

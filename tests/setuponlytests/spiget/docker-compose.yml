@@ -10,4 +10,4 @@ services:
       PAPER_CUSTOM_JAR: /servers/fake.jar
       SPIGET_RESOURCES: "34315,3836,6245,2124"
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container

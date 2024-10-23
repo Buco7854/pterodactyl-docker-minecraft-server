@@ -15,6 +15,6 @@ services:
         @/extras/listing.txt
       CF_API_KEY: ${CF_API_KEY}
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container
       - ./fake.jar:/servers/fake.jar:ro
       - ./listing.txt:/extras/listing.txt:ro

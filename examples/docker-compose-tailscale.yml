@@ -27,7 +27,7 @@ services:
       # AUTOPAUSE_KNOCK_INTERFACE: "tailscale0"
       # MAX_TICK_TIME: "-1"
     volumes:
-      - minecraftserver:/data
+      - minecraftserver:/home/container
     restart: unless-stopped
 
     

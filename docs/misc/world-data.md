@@ -1,7 +1,7 @@
 
 ## Downloadable world
 
-Instead of mounting the `/data` volume, you can instead specify the URL of a ZIP or compressed TAR file containing an archived world. It will be searched for a file `level.dat` and the containing subdirectory moved to the directory named by `$LEVEL`. This means that most of the archived Minecraft worlds downloadable from the Internet will already be in the correct format.
+Instead of mounting the `/home/container` volume, you can instead specify the URL of a ZIP or compressed TAR file containing an archived world. It will be searched for a file `level.dat` and the containing subdirectory moved to the directory named by `$LEVEL`. This means that most of the archived Minecraft worlds downloadable from the Internet will already be in the correct format.
 
     docker run -d -e WORLD=http://www.example.com/worlds/MySave.zip ...
 
@@ -50,7 +50,7 @@ Datapacks can be installed in a similar manner to mods/plugins. There are many e
 * `REMOVE_OLD_DATAPACKS_INCLUDE`: default is `*.zip`
 * `REMOVE_OLD_DATAPACKS_EXCLUDE`: default is empty
 
-Datapacks will be placed in `/data/$LEVEL/datapacks`
+Datapacks will be placed in `/home/container/$LEVEL/datapacks`
 
 ## VanillaTweaks
 

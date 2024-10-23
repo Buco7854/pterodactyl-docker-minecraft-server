@@ -79,7 +79,7 @@ The image comes with a default set of exclude/includes, maintained [in the repo 
 
 ## Excluding Overrides Files
 
-Modrinth mrpack/zip files may include an `overrides` subdirectory that contains config files, world data, and extra mod files. All of those files will be extracted into the `/data` path of the container. If any of those files, such as incompatible mods, need to be excluded from extraction, then the `MODRINTH_OVERRIDES_EXCLUSIONS` variable can be set with a comma or newline delimited list of ant-style paths ([see below](#ant-style-paths)) to exclude, relative to the overrides (or `/data`) directory.
+Modrinth mrpack/zip files may include an `overrides` subdirectory that contains config files, world data, and extra mod files. All of those files will be extracted into the `/home/container` path of the container. If any of those files, such as incompatible mods, need to be excluded from extraction, then the `MODRINTH_OVERRIDES_EXCLUSIONS` variable can be set with a comma or newline delimited list of ant-style paths ([see below](#ant-style-paths)) to exclude, relative to the overrides (or `/home/container`) directory.
 
 ### Ant-style paths
 

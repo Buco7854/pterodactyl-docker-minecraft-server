@@ -34,7 +34,7 @@ services:
     environment:
       EULA: "TRUE"
     volumes:
-      - data:/data
+      - data:/home/container
 
 volumes:
   data:

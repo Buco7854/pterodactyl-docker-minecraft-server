@@ -2,8 +2,8 @@
 
 # shellcheck source=../scripts/start-utils
 . "${SCRIPTS:-/}start-utils"
-if [ -f /data/.mc-health.env ]; then
-  . /data/.mc-health.env
+if [ -f /home/container/.mc-health.env ]; then
+  . /home/container/.mc-health.env
 fi
 
 if isTrue "${DISABLE_HEALTHCHECK}"; then

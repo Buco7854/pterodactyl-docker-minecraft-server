@@ -24,7 +24,7 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - mc-paper:/data
+      - mc-paper:/home/container
     restart: unless-stopped
 volumes:
   mc-paper: {}
@@ -46,7 +46,7 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - mc-paper:/data
+      - mc-paper:/home/container
     restart: unless-stopped
 volumes:
   mc-paper: {}

@@ -23,5 +23,5 @@ if [[ $( ps -ax -o stat,comm | grep 'java' | awk '{ print $1 }') =~ ^S.*$ ]] ; t
   pkill -STOP java
 
   # create .paused file in data directory
-  touch /data/.paused
+  touch /home/container/.paused
 fi

@@ -11,6 +11,6 @@ services:
       CF_FORCE_SYNCHRONIZE: true
       MEMORY: 4G
     volumes:
-      - ./data:/data
+      - ./data:/home/container
     ports:
       - "25565:25565"

@@ -10,8 +10,8 @@
 : "${REPLACE_ENV_VARIABLES_EXCLUDES:=}"
 : "${REPLACE_ENV_VARIABLES_EXCLUDE_PATHS:=}"
 : "${DEBUG:=false}"
-: "${MODS_OUT_DIR:=/data/mods}"
-: "${PLUGINS_OUT_DIR:=/data/plugins}"
+: "${MODS_OUT_DIR:=/home/container/mods}"
+: "${PLUGINS_OUT_DIR:=/home/container/plugins}"
 
 set -e
 isDebugging && set -x
@@ -53,7 +53,7 @@ if usesMods && [ -d "${COPY_MODS_SRC}" ]; then
 fi
 
 : "${COPY_CONFIG_SRC:="/config"}"
-: "${COPY_CONFIG_DEST:="/data/config"}"
+: "${COPY_CONFIG_DEST:="/home/container/config"}"
 
 if [ -d "${COPY_CONFIG_SRC}" ]; then
   log "Copying any configs from ${COPY_CONFIG_SRC} to ${COPY_CONFIG_DEST}"

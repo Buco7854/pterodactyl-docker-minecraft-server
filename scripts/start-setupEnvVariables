@@ -7,7 +7,7 @@ set -e
 handleDebugMode
 
 : "${REPLACE_ENV_IN_PLACE:=${REPLACE_ENV_VARIABLES:-false}}"
-: "${REPLACE_ENV_PATHS:=/data}"
+: "${REPLACE_ENV_PATHS:=/home/container}"
 : "${REPLACE_ENV_SUFFIXES:=yml,yaml,txt,cfg,conf,properties,hjson,json,tml,toml}"
 : "${REPLACE_ENV_VARIABLE_PREFIX=${ENV_VARIABLE_PREFIX:-CFG_}}"
 : "${REPLACE_ENV_VARIABLES_EXCLUDES:=}"
@@ -30,7 +30,7 @@ fi
 if [[ $DOWNLOAD_DEFAULT_CONFIGS ]]; then
   log "Downloading default configs, if needed"
   if ! mc-image-helper mcopy \
-    --to /data/config \
+    --to /home/container/config \
     --skip-existing --skip-up-to-date=false \
     "$DOWNLOAD_DEFAULT_CONFIGS" 2> /dev/null; then
     logWarning "One or more default config files were not available from $DOWNLOAD_DEFAULT_CONFIGS"

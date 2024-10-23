@@ -12,12 +12,12 @@ handleDebugMode
 : "${PAPER_CUSTOM_JAR:=}"
 : "${PAPER_CONFIG_DEFAULTS_REPO:=${PAPER_CONFIG_REPO:=https://raw.githubusercontent.com/dayyeeet/minecraft-default-configs/main}}"
 
-resultsFile=/data/.paper.env
+resultsFile=/home/container/.paper.env
 if [[ $PAPER_CUSTOM_JAR ]]; then
   export SERVER="$PAPER_CUSTOM_JAR"
 elif [[ $PAPER_DOWNLOAD_URL ]]; then
   if ! mc-image-helper install-paper \
-    --output-directory=/data \
+    --output-directory=/home/container \
     --results-file="$resultsFile" \
     --url="$PAPER_DOWNLOAD_URL"; then
       logError "Failed to download from custom PaperMC URL"
@@ -26,7 +26,7 @@ elif [[ $PAPER_DOWNLOAD_URL ]]; then
   applyResultsFile ${resultsFile}
 else
   args=(
-    --output-directory=/data
+    --output-directory=/home/container
     --results-file="$resultsFile"
     --project="$PAPER_PROJECT"
     --version="$VERSION"

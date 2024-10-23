@@ -14,4 +14,4 @@ services:
       SPIGET_RESOURCES: 34315,3836
       REMOVE_OLD_MODS: true
     volumes:
-      - ./data:/data
+      - ./data:/home/container

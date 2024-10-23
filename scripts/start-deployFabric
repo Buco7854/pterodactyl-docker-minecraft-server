@@ -10,7 +10,7 @@ export TYPE=FABRIC
 : "${FABRIC_LAUNCHER_URL:=}"
 : "${FABRIC_LOADER_VERSION:=LATEST}"
 
-resultsFile=/data/.install-fabric.env
+resultsFile=/home/container/.install-fabric.env
 
 isDebugging && set -x
 

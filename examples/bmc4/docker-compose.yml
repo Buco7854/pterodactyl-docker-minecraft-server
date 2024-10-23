@@ -17,4 +17,4 @@ services:
       - "25565:25565"
     # declare /data volume mapping as desired
 #    volumes:
-#      - ./data:/data
+#      - ./data:/home/container

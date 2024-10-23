@@ -13,7 +13,7 @@ in your config files after the container starts.
 For those cases there is the option to replace defined variables inside your configs
 with environment variables defined at container runtime.
 
-When the environment variable `REPLACE_ENV_IN_PLACE` is set to `true` (the default), the startup script will go through all files inside the container's `/data` path and replace variables that match the container's environment variables. Variables can instead (or in addition to) be replaced in files sync'ed from `/plugins`, `/mods`, and `/config` by setting `REPLACE_ENV_DURING_SYNC` to `true` (defaults to `false`).
+When the environment variable `REPLACE_ENV_IN_PLACE` is set to `true` (the default), the startup script will go through all files inside the container's `/home/container` path and replace variables that match the container's environment variables. Variables can instead (or in addition to) be replaced in files sync'ed from `/plugins`, `/mods`, and `/config` by setting `REPLACE_ENV_DURING_SYNC` to `true` (defaults to `false`).
 
 Variables that you want to replace need to be declared inside curly brackets and prefixed with a dollar sign, such as  `${CFG_YOUR_VARIABLE}`, which is same as many scripting languages.
 
@@ -49,7 +49,7 @@ Specific files can be excluded by listing their name (without path) in the varia
 Paths can be excluded by listing them in the variable `REPLACE_ENV_VARIABLES_EXCLUDE_PATHS`. Path
 excludes are recursive. Here is an example:
 ```
-REPLACE_ENV_VARIABLES_EXCLUDE_PATHS="/data/plugins/Essentials/userdata /data/plugins/MyPlugin"
+REPLACE_ENV_VARIABLES_EXCLUDE_PATHS="/home/container/plugins/Essentials/userdata /home/container/plugins/MyPlugin"
 ```
 
 Here is a full example where we want to replace values inside a `database.yml`.
@@ -74,7 +74,7 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - "mc:/data"
+      - "mc:/home/container"
     environment:
       EULA: "TRUE"
       ENABLE_RCON: "true"
@@ -110,7 +110,7 @@ The following example shows a patch-set file where various fields in the `paper.
 {
   "patches": [
     {
-      "file": "/data/paper.yml",
+      "file": "/home/container/paper.yml",
       "ops": [
         {
           "$set": {

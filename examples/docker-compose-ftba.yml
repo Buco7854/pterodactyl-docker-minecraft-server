@@ -15,7 +15,7 @@ services:
       FTB_MODPACK_VERSION_ID: ""
     volumes:
       # use a named, managed volume for data volume
-      - ftba:/data
+      - ftba:/home/container
 
 volumes:
   # declared the named volume, but use default/local storage engine

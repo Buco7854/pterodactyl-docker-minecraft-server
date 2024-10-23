@@ -7,7 +7,7 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - fabric:/data
+      - fabric:/home/container
 
 volumes:
   fabric: {}

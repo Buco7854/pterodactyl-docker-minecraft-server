@@ -11,6 +11,6 @@ services:
       CUSTOM_SERVER: /servers/fake.jar
       VERSION: 1.18.1
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container
       # the following are only used to speed up test execution
       - ./verify.sh:/servers/fake.jar

@@ -8,4 +8,4 @@ services:
       TYPE: QUILT
       VERSION: ${MINECRAFT_VERSION:-LATEST}
     volumes:
-      - ./data:/data
+      - ./home/container:/home/container

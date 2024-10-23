@@ -3,7 +3,7 @@ services:
     image: itzg/minecraft-server:${IMAGE_TAG:-java8}
     volumes:
     - ./modpacks:/modpacks:ro
-    - data:/data
+    - data:/home/container
     environment:
       EULA: "true"
       TYPE: CURSEFORGE

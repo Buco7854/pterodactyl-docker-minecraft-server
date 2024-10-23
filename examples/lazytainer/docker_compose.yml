@@ -21,7 +21,7 @@ services:
       TYPE: PAPER
       MEMORY: 4G
     volumes:
-      - ./data:/data
+      - ./data:/home/container
     labels:
       - lazytainer.group=minecraft
     depends_on:

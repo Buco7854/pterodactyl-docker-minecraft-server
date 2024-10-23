@@ -50,8 +50,8 @@ services:
     environment:
       EULA: "TRUE"
     volumes:
-      # attach the relative directory 'data' to the container's /data path
-      - ./data:/data
+      # attach the relative directory 'data' to the container's /home/container path
+      - ./data:/home/container
 ```
 
 To apply changes made to the compose file, just run `docker compose up -d` again.

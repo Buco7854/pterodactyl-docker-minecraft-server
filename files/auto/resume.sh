@@ -9,5 +9,5 @@ if [[ $( ps -ax -o stat,comm | grep 'java' | awk '{ print $1 }') =~ ^T.*$ ]] ; t
   pkill -CONT java
 
   # remove .paused file from data directory
-  rm -f /data/.paused
+  rm -f /home/container/.paused
 fi

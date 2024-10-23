@@ -29,11 +29,11 @@ shopt -s nullglob
 isDebugging && set -x
 
 #umask 002
-export HOME=/data
+export HOME=/home/container
 
-log "Running as uid=$(id -u) gid=$(id -g) with /data as '$(ls -lnd /data)'"
+log "Running as uid=$(id -u) gid=$(id -g) with /home/container as '$(ls -lnd /home/container)'"
 
-if [ ! -e /data/eula.txt ]; then
+if [ ! -e /home/container/eula.txt ]; then
   if ! isTrue "$EULA"; then
     log ""
     logError "Please accept the Minecraft EULA at"
@@ -133,7 +133,7 @@ if ! fixJavaPath; then
   exit 1
 fi
 
-cd /data || exit 1
+cd /home/container || exit 1
 
 export DECLARED_TYPE=${TYPE^^}
 export DECLARED_VERSION="$VERSION"

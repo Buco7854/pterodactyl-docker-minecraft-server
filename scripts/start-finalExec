@@ -7,7 +7,7 @@
 # shellcheck source=start-utils
 . "${SCRIPTS:-/}start-utils"
 isDebugging && set -x
-baseDataDir=/data
+baseDataDir=/home/container
 tmpServerIconPath=/tmp/icon.img
 serverIconPath=${baseDataDir}/server-icon.png
 mcHealthEnvPath=${baseDataDir}/mc-health.env

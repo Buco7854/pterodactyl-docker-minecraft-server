@@ -21,7 +21,7 @@ services:
       - "25565:25565"
       - "19132:19132/udp"
     volumes:
-      - ./data:/data
+      - ./data:/home/container
 ```
 
 [Source](https://github.com/itzg/docker-minecraft-server/blob/master/examples/geyser/docker-compose.yml)
@@ -67,7 +67,7 @@ services:
     environment:
       EULA: "TRUE"
     volumes:
-      - data:/data
+      - data:/home/container
 
 volumes:
   data:
@@ -103,7 +103,7 @@ services:
       TYPE: PAPER
       MEMORY: 4G
     volumes:
-      - ./data:/data
+      - ./data:/home/container
     labels:
       - lazytainer.group=minecraft
     depends_on:

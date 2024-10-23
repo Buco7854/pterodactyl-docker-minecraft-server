@@ -19,13 +19,13 @@
         <tr>
             <td><code>UID</code></td>
             <td>The linux user id to run as</td>
-            <td><code>1000</code></td>
+            <td><code>988</code></td>
             <td>⬜️</td>
         </tr>
         <tr>
             <td><code>GID</code></td>
             <td>The linux group id to run as</td>
-            <td><code>1000</code></td>
+            <td><code>988</code></td>
             <td>⬜️</td>
         </tr>
         <tr>

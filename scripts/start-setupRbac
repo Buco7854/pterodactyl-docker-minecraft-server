@@ -25,7 +25,7 @@ sharedArgs=(--version="$VERSION")
 if [[ ${FTB_DIR:-} ]]; then
   sharedArgs+=(--output-directory="$FTB_DIR")
 else
-  sharedArgs+=(--output-directory=/data)
+  sharedArgs+=(--output-directory=/home/container)
 fi
 
 if [[ -v OPS_FILE ]]; then

@@ -9,11 +9,11 @@ IFS=$'\n\t'
 . "${SCRIPTS:-/}start-utils"
 isDebugging && set -x
 
-resultsFile=/data/.purpur.env
+resultsFile=/home/container/.purpur.env
 
 if [[ $PURPUR_DOWNLOAD_URL ]]; then
   if ! mc-image-helper install-purpur \
-    --output-directory=/data \
+    --output-directory=/home/container \
     --results-file="$resultsFile" \
     --url="$PURPUR_DOWNLOAD_URL}"; then
       logError "Failed to download from custom Purpur URL"
@@ -21,7 +21,7 @@ if [[ $PURPUR_DOWNLOAD_URL ]]; then
   fi
 else
   args=(
-    --output-directory=/data
+    --output-directory=/home/container
     --results-file="$resultsFile"
     --version="$VERSION"
   )

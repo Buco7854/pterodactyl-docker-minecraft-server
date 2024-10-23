@@ -2,5 +2,5 @@
 
 set -e
 
-addgroup -g 1000 minecraft
-adduser -Ss /bin/false -u 1000 -G minecraft -h /home/minecraft minecraft
+addgroup -g 988 container
+adduser -Ss /bin/false -u 988 -G container -h /home/container container

@@ -35,7 +35,7 @@ if [[ ${baseName} != *-server.jar* ]]; then
   exit 1
 fi
 
-export SERVER="/data/${baseName}"
+export SERVER="/home/container/${baseName}"
 
 if [ ! -f "${SERVER}" ]; then
   log "Downloading ${baseName}"

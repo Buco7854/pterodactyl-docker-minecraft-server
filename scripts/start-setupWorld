@@ -12,7 +12,7 @@ else
   if [ "$TYPE" = "CURSEFORGE" ]; then
     worldDest=$FTB_DIR/${LEVEL:-world}
   else
-    worldDest=/data/${LEVEL:-world}
+    worldDest=/home/container/${LEVEL:-world}
   fi
 fi
 

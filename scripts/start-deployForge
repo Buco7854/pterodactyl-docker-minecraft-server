@@ -6,11 +6,11 @@
 # shellcheck source=start-utils
 . "${SCRIPTS:-$(dirname "$0")}/start-utils"
 isDebugging && set -x
-resultsFile=/data/.run-forge.env
+resultsFile=/home/container/.run-forge.env
 
 function mc-image-helper-forge() {
   mc-image-helper install-forge \
-    --output-directory=/data \
+    --output-directory=/home/container \
     --results-file="${resultsFile}" \
     --minecraft-version="${VERSION}" \
     --force-reinstall="${FORGE_FORCE_REINSTALL}" "$@"

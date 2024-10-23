@@ -48,9 +48,9 @@ getResourceFromSpiget() {
 
   log "Downloading resource ${resource} ..."
 
-  mkdir -p /data/plugins
+  mkdir -p /home/container/plugins
 
-  versionfile="/data/plugins/.${resource}-version.json"
+  versionfile="/home/container/plugins/.${resource}-version.json"
   versionfileNew="${versionfile}.tmp"
 
   if [ -f "$versionfile" ]; then
@@ -95,7 +95,7 @@ getResourceFromSpiget() {
 downloadResourceFromSpiget() {
   resource=${1?}
 
-  tempDir="/data/plugins/tmp-${resource}"
+  tempDir="/home/container/plugins/tmp-${resource}"
   mkdir -p $tempDir
   resourceUrl="https://api.spiget.org/v2/resources/${resource}"
   if ! outfile=$(get_silent --output-filename -o $tempDir "${acceptArgs[@]}" "${resourceUrl}/download"); then
@@ -112,15 +112,15 @@ downloadResourceFromSpiget() {
     exit 1
   fi
   if [[ $fileType = .sk ]]; then
-    mkdir -p /data/plugins/Skript/scripts
-    mv "$outfile" /data/plugins/Skript/scripts
+    mkdir -p /home/container/plugins/Skript/scripts
+    mv "$outfile" /home/container/plugins/Skript/scripts
   else
     if containsPlugin "${outfile}"; then
       log "Moving resource ${resource} into plugins"
-      mv "$outfile" /data/plugins
+      mv "$outfile" /home/container/plugins
     elif containsJars "${outfile}"; then
       log "Extracting contents of resource ${resource} into plugins"
-      extract "$outfile" /data/plugins
+      extract "$outfile" /home/container/plugins
     else
       logError "File for resource ${resource} has an unexpected file type: ${fileType}"
       exit 2
@@ -131,7 +131,7 @@ downloadResourceFromSpiget() {
 
 if [[ ${SPIGET_RESOURCES} ]]; then
   if isTrue "${REMOVE_OLD_MODS}"; then
-    removeOldMods /data/plugins
+    removeOldMods /home/container/plugins
     REMOVE_OLD_MODS=false
   fi
 

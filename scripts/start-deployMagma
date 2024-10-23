@@ -18,7 +18,7 @@ if [[ $downloadUrl == null ]]; then
   exit 1
 fi
 
-if ! SERVER=$(get --output-filename --skip-up-to-date --output /data "$downloadUrl"); then
+if ! SERVER=$(get --output-filename --skip-up-to-date --output /home/container "$downloadUrl"); then
   logError "Failed to download Magma server jar from $downloadUrl"
   exit 1
 fi

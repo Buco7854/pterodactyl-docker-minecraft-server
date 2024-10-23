@@ -12,4 +12,4 @@ services:
       PAPER_CUSTOM_JAR: /servers/fake.jar
     volumes:
       - ./worlds:/worlds:ro
-      - ./data:/data
+      - ./home/container:/home/container

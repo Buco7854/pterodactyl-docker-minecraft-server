@@ -9,6 +9,6 @@ services:
     ports:
       - "25565:25565"
     volumes:
-      - mc:/data
+      - mc:/home/container
 volumes:
   mc: {}

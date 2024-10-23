@@ -10,7 +10,7 @@ services:
       CF_SLUG: "custom"
       MEMORY: 2G
     volumes:
-      - mc-data:/data
+      - mc-data:/home/container
       - ./manifests:/manifests:ro
     ports:
       - "25565:25565"

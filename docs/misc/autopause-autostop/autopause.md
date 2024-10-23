@@ -12,9 +12,9 @@ An auto-pause functionality is provided that monitors whether clients are connec
 
 The utility used to wake the server (`knock(d)`) works at network interface level. So the correct interface has to be set using the `AUTOPAUSE_KNOCK_INTERFACE` variable when using non-default networking environments (e.g. host-networking, Portainer oder NAS solutions). See the description of the variable below.
 
-A file called `.paused` is created in `/data` directory when the server is paused and removed when the server is resumed. Other services may check for this file's existence before waking the server.
+A file called `.paused` is created in `/home/container` directory when the server is paused and removed when the server is resumed. Other services may check for this file's existence before waking the server.
 
-A `.skip-pause` file can be created in the `/data` directory to make the server skip autopausing, for as long as the file is present. The autopause timer will also be reset.
+A `.skip-pause` file can be created in the `/home/container` directory to make the server skip autopausing, for as long as the file is present. The autopause timer will also be reset.
 
 A starting, example compose file has been provided in [examples/docker-compose-autopause.yml](https://github.com/itzg/docker-minecraft-server/blob/master/examples/docker-compose-autopause.yml).
 

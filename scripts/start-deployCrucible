@@ -28,12 +28,12 @@ if [[ $downloadUrl = null ]]; then
 fi
 
 log "Downloading Crucible from $downloadUrl"
-if ! SERVER=$(get --skip-existing --output-filename -o /data "$downloadUrl"); then
+if ! SERVER=$(get --skip-existing --output-filename -o /home/container "$downloadUrl"); then
   logError "Crucible jar from $downloadUrl"
   exit 1
 fi
 
-librariesDir=/data/libraries
+librariesDir=/home/container/libraries
 if [ ! -d "$librariesDir" ]; then
   if ! librariesUrl=$(get --json-path "$.assets[?(@.name == 'libraries.zip')].browser_download_url" \
       --accept "application/vnd.github.v3+json" "$crucibleReleaseUrl"); then

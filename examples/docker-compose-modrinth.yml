@@ -10,7 +10,7 @@ services:
       TYPE: FABRIC
       MODRINTH_PROJECTS: fallingtree
     volumes:
-      - data:/data
+      - data:/home/container
 
 volumes:
   data: {}

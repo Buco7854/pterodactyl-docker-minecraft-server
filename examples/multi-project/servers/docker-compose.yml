@@ -28,7 +28,7 @@ services:
       # since we're behind a proxy
       ONLINE_MODE: "false"
     volumes:
-      - mc:/data
+      - mc:/home/container
       # mainly to drop in config files specific to plugins
       - ./mc-plugins:/plugins
     networks:

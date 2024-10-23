@@ -38,4 +38,4 @@ docker run -d --name mc-ftb -e EULA=TRUE \
 
 !!! note
 
-    Normally you will also add `-v` volume for `/data` since the mods and config are installed there along with world data.
+    Normally you will also add `-v` volume for `/home/container` since the mods and config are installed there along with world data.

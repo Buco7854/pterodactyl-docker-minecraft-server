@@ -23,4 +23,4 @@ the new server jar file is downloaded and used.
 
 !!! note
 
-    Over time you might see older versions of the server jar remain in the `/data` directory. It is safe to remove those.
+    Over time you might see older versions of the server jar remain in the `/home/container` directory. It is safe to remove those.

@@ -22,7 +22,7 @@ set -eu
 : "${CF_MODPACK_MANIFEST:=}"
 : "${CF_API_CACHE_DEFAULT_TTL:=}" # as ISO-8601 duration, such as P2D or PT12H
 
-resultsFile=/data/.install-curseforge.env
+resultsFile=/home/container/.install-curseforge.env
 
 isDebugging && set -x
 

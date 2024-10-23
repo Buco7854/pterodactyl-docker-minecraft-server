@@ -10,4 +10,4 @@ services:
       WORLD: /worlds/world-for-testing.zip
     volumes:
       - ./worlds:/worlds:ro
-      - ./data:/data
+      - ./home/container:/home/container

@@ -1,19 +1,19 @@
-Everything the container manages is located under the **container's** `/data` path, as shown here:
+Everything the container manages is located under the **container's** `/home/container` path, as shown here:
 
 ![](img/level-vs-world.drawio.png)
 
 !!! note
 
-    The container path `/data` is pre-declared as a volume, so if you do nothing then it will be allocated as an anonymous volume. As such, it is subject to removal when the container is removed. 
+    The container path `/home/container` is pre-declared as a volume, so if you do nothing then it will be allocated as an anonymous volume. As such, it is subject to removal when the container is removed. 
 
 ### Attaching data directory to host filesystem
 
-In most cases the easiest way to persist and work with the minecraft data files is to use [bind mounts](https://docs.docker.com/storage/bind-mounts/) with the `-v` argument to map a directory on your host machine to the container's `/data` directory. In the following example, the path `/home/user/minecraft-data` **must be** a directory on your host machine:
+In most cases the easiest way to persist and work with the minecraft data files is to use [bind mounts](https://docs.docker.com/storage/bind-mounts/) with the `-v` argument to map a directory on your host machine to the container's `/home/container` directory. In the following example, the path `/home/user/minecraft-data` **must be** a directory on your host machine:
 
-    -v /home/user/minecraft-data:/data
+    -v /home/user/minecraft-data:/home/container
        ------------------------- -----
         |                         |
-        |                         +-- must always be /data
+        |                         +-- must always be /home/container
         |
         +-- replace with a directory on your host machine
 
@@ -23,7 +23,7 @@ When attached in this way you can stop the server, edit the configuration under 
     When running rootless containers, such as with Podman, or using SELinux / AppArmor on your system, append ":Z" to the volume mapping. For example:
 
     ```
-    /home/user/minecraft-data:/data:Z
+    /home/user/minecraft-data:/home/container:Z
     ```
 
     There might be a safer/better way to accommodate these systems. Please post an issue or PR if you have more information.
@@ -44,10 +44,10 @@ services:
     restart: unless-stopped
     volumes:
       # attach a directory relative to the directory containing this compose file
-      - ./minecraft-data:/data
+      - ./minecraft-data:/home/container
 ```
 
-### Converting anonymous `/data` volume to named volume
+### Converting anonymous `/home/container` volume to named volume
 
 If you had used the commands in the first section, without the `-v` volume attachment, then an anonymous data volume was created by Docker. You can later bring over that content to a named or host attached volume using the following procedure.
 
@@ -66,13 +66,13 @@ docker stop mc
 Use a temporary container to copy over the anonymous volume's content into a named volume, "mc" in this case:
 
 ``` shell
-docker run --rm --volumes-from mc -v mc:/new alpine cp -avT /data /new
+docker run --rm --volumes-from mc -v mc:/new alpine cp -avT /home/container /new
 ```
 
 Now you can recreate the container with any environment variable changes, etc by attaching the named volume created from the previous step:
 
 ``` shell
-docker run -d -it --name mc-new -v mc:/data -p 25565:25565 -e EULA=TRUE -e MEMORY=2G itzg/minecraft-server
+docker run -d -it --name mc-new -v mc:/home/container -p 25565:25565 -e EULA=TRUE -e MEMORY=2G itzg/minecraft-server
 ```
 
 ### Locating filesystem path of anonymous volume
